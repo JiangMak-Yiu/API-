@@ -24,7 +24,7 @@
 
 ## 🚀 使用方法
 
-1. 直接访问网站: [江江API导航宝库](https://github.com/JiangMak-Yiu/API-)
+1. 直接访问网站: [江江API导航宝库](https://apid.江江.icu)
 2. 或者克隆本项目到本地:
 
 ```bash
