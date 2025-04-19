@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江江API导航宝库</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1><i class="fas fa-compass"></i> 江江API<span>导航宝库</span></h1>
+                <div class="header-actions">
+                    <a href="https://github.com/JiangMak-Yiu/API-" class="github-btn" title="GitHub仓库" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <button id="themeToggle" class="theme-toggle" title="切换主题">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </div>
+            <p class="subtitle">发现优质API资源的一站式平台</p>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="搜索API...">
+            </div>
+            <div class="control-panel">
+                <div class="filter-sort">
+                    <div class="control-group">
+                        <label>排序方式</label>
+                        <select id="sortSelect">
+                            <option value="default">默认排序</option>
+                            <option value="nameAsc">名称 (A-Z)</option>
+                            <option value="nameDesc">名称 (Z-A)</option>
+                            <option value="apiCountDesc">API数量 (多-少)</option>
+                            <option value="apiCountAsc">API数量 (少-多)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="view-actions">
+                    <button id="gridViewBtn" class="view-btn active" title="网格视图">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button id="listViewBtn" class="view-btn" title="列表视图">
+                        <i class="fas fa-list"></i>
+                    </button>
+                    <button id="randomBtn" class="action-btn" title="随机推荐">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button id="favoritesBtn" class="action-btn" title="我的收藏">
+                        <i class="far fa-heart"></i>
+                        <span class="badge" id="favCount">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-database"></i>
+                    <span id="totalCount">179</span>
+                    <p>API网站</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-eye"></i>
+                    <span id="visitCount">0</span>
+                    <p>总访问量</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-heart"></i>
+                    <span id="totalFavs">0</span>
+                    <p>总收藏数</p>
+                </div>
+            </div>
+        </header>
+
+        <div id="randomPanel" class="panel hidden">
+            <div class="panel-header">
+                <h3>随机推荐</h3>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="panel-body" id="randomApiList"></div>
+        </div>
+
+        <div id="favoritesPanel" class="panel hidden">
+            <div class="panel-header">
+                <h3>我的收藏</h3>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="panel-body" id="favoritesApiList"></div>
+        </div>
+
+        <div id="recentPanel" class="panel">
+            <div class="panel-header">
+                <h3>最近访问</h3>
+                <button class="toggle-btn"><i class="fas fa-chevron-up"></i></button>
+            </div>
+            <div class="panel-body" id="recentApiList"></div>
+        </div>
+
+        <main id="apiList"></main>
+        
+        <footer>
+            <p>&copy; 2023 江江API导航宝库 | <i class="fas fa-code"></i> 精选实用API网站 | <i class="fab fa-qq"></i> 官方群：1028010826</p>
+        </footer>
+    </div>
+
+    <div id="apiPreview" class="preview-card hidden">
+        <h3 id="previewTitle"></h3>
+        <div class="preview-meta">
+            <p><i class="fas fa-database"></i> API数量: <span id="previewApiCount"></span></p>
+            <p><i class="fas fa-link"></i> <a id="previewUrl" href="#" target="_blank">访问网站</a></p>
+        </div>
+        <div class="preview-actions">
+            <button id="previewFavBtn"><i class="far fa-heart"></i> 收藏</button>
+            <button id="previewShareBtn"><i class="fas fa-share-alt"></i> 分享</button>
+        </div>
+    </div>
+
+    <div id="shareModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>分享API</h3>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>分享<span id="shareName"></span>给好友:</p>
+                <div class="share-buttons">
+                    <button class="share-btn weixin"><i class="fab fa-weixin"></i> 微信</button>
+                    <button class="share-btn weibo"><i class="fab fa-weibo"></i> 微博</button>
+                    <button class="share-btn qq"><i class="fab fa-qq"></i> QQ</button>
+                </div>
+                <div class="share-link">
+                    <input type="text" id="shareLink" readonly>
+                    <button id="copyLinkBtn"><i class="fas fa-copy"></i> 复制</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
